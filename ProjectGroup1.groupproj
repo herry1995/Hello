@@ -1,0 +1,60 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{2B4A5495-B99D-4EFD-96EC-4A7D70879E46}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="AppFirst.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="F:\Works\RAD_Pro\SearchFile.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="..\..\Documents\RAD Studio\Projects\Thread_Create.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="AppFirst">
+			<MSBuild Projects="AppFirst.dproj"/>
+		</Target>
+		<Target Name="AppFirst:Clean">
+			<MSBuild Targets="Clean" Projects="AppFirst.dproj"/>
+		</Target>
+		<Target Name="AppFirst:Make">
+			<MSBuild Targets="Make" Projects="AppFirst.dproj"/>
+		</Target>
+		<Target Name="SearchFile">
+			<MSBuild Projects="F:\Works\RAD_Pro\SearchFile.dproj"/>
+		</Target>
+		<Target Name="SearchFile:Clean">
+			<MSBuild Targets="Clean" Projects="F:\Works\RAD_Pro\SearchFile.dproj"/>
+		</Target>
+		<Target Name="SearchFile:Make">
+			<MSBuild Targets="Make" Projects="F:\Works\RAD_Pro\SearchFile.dproj"/>
+		</Target>
+		<Target Name="Thread_Create">
+			<MSBuild Projects="..\..\Documents\RAD Studio\Projects\Thread_Create.dproj"/>
+		</Target>
+		<Target Name="Thread_Create:Clean">
+			<MSBuild Targets="Clean" Projects="..\..\Documents\RAD Studio\Projects\Thread_Create.dproj"/>
+		</Target>
+		<Target Name="Thread_Create:Make">
+			<MSBuild Targets="Make" Projects="..\..\Documents\RAD Studio\Projects\Thread_Create.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="AppFirst;SearchFile;Thread_Create"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="AppFirst:Clean;SearchFile:Clean;Thread_Create:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="AppFirst:Make;SearchFile:Make;Thread_Create:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>
